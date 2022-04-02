@@ -14,8 +14,34 @@ function RecipeDetails() {
    
     return (
         <div className="reciperDetails">
-            {specificRecipe.description}
+            <h3 className="cardTitle">{specificRecipe.title}</h3>
+            <h4>{specificRecipe.description}</h4>
+            <p>Prep Time:<span>{specificRecipe.prep_time_min}</span></p>
+          <div className="ingredients">
+            <h4 className="heading">Ingredients</h4>
+            <ul className="listItem">
+              {specificRecipe.ingredients.map((ingredient,index) => (
+                <li key={index}>
+                 {ingredient}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="cookingInstructions">
+            <h4 className="heading">Instructions</h4>
+            <div className="cookingInstructions">
+            <ul className="listItem">
+              {specificRecipe.directions.map((direction,i)=>(
+              <li key={i}>
+               {direction}
+              </li>
+              ))}
+               </ul>
+            </div>
+          </div>
         </div>
+
+        
     );
 }
 
