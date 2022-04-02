@@ -1,8 +1,15 @@
 import { createStore, combineReducers } from 'redux';
-import { allRecipesReducer } from '../reducers/allRecipesReducer';
+import { configureStore } from '@reduxjs/toolkit'
+import recipesReducer from './../reducers/allRecipesSlice'
+import specificRecipeReducer from './../reducers/specificRecipeDetailsSlice'
 
-export const store = createStore(combineReducers({
-    allRecipesReducer: allRecipesReducer
-}
-    
-))
+
+const reducer = combineReducers({
+    allRecipes: recipesReducer,
+    specificRecipe: specificRecipeReducer
+  })
+
+
+export const store = configureStore({
+    reducer
+  })
