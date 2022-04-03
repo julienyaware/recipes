@@ -1,19 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
+import {adjustServings} from './../reducers/adjustedServingsRecipeSlice'
 
 function RecipeDetails() {
 
-    const recipeCollection = useSelector(state=> state.allRecipes)
     const specificRecipe = useSelector(state => state.specificRecipe)
+    const dispatch = useDispatch()
 
-    const renderedRecipes = recipeCollection.map(recipe => (
-        <article className="post-excerpt" key={recipe.title}>
-          <h3>{recipe.title}</h3>
-        </article>
-      ))
+    // const handleAdjustServings = (e) =>{
+    //  e.preventDefault
+    // }
+
+    const handleChange = (e)=> {
+     
+    }
+
+    const recipeInDisplay = {
+      recipeIndDisplay: specificRecipe
+    }
    
     return (
         <div className="reciperDetails">
+          <span>Servings</span>
+          <br/>
+          <button onClick={()=>dispatch(adjustServings(recipeInDisplay))}>Adjust Servings</button>
             <h3 className="cardTitle">{specificRecipe.title}</h3>
             <h4>{specificRecipe.description}</h4>
             <p>Prep Time:<span>{specificRecipe.prep_time_min}</span></p>
