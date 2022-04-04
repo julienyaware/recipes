@@ -1,12 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, useSelector } from '@reduxjs/toolkit'
 import allRecipes from './../data/allRecipes'
+import Fraction from 'mathjs'
+
 
 const initialState = {}
 
+const multiplyIngredientsByNewServings = (ingredient,servings)=> {
+    //return quantity.substring(0, quantity.indexOf(' '));
+    //const multiply = match => match * servings
+    const multiply = match=> {
+     let quantityPerPerson = Math.divide(1,Math.fraction(match.toString()))
+     //totalQuantityForAllServings
+     let totalQuantityForAllServings = Math.multiply(Math.fraction(quantityPerPerson.toString()),servings)
+     return totalQuantityForAllServings
+    }
+    console.log(ingredient.replace(/\d+/g, multiply))
+    return ingredient.replace(/\d+/g, multiply)
 
-const multiplyIngredientsByNewServings = (quantity)=> {
-    return quantity.substring(0, quantity.indexOf(' '));
-    //console.log(nombo)
   }
   
   const generateNewServings = (arr)=> {
@@ -14,7 +24,7 @@ const multiplyIngredientsByNewServings = (quantity)=> {
    return multiplyIngredientsByNewServings(ingredient)
     
   })
-  console.log('new array ni '+ arr)
+  console.log('new array ni '+ newQuantities)
   return newQuantities
   }
 
