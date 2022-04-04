@@ -11,14 +11,7 @@ function NavBar(props) {
                     <li className="menu_item">
                         <Link className="menu_link" to="/">Home</Link>
                     </li>
-                    <li className="menu_item">
-                        <Link className="menu_link" to="/categories">Categories</Link>
-                    </li>
                 </ul>
-
-                <div className="menu_search">
-                    <Search />
-                </div>
             </nav>
         </div>
     );
