@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
 import {adjustServings} from './../reducers/specificRecipeDetailsSlice'
+import styles from './../styles/recipeDetails.css'
 
 function RecipeDetails() {
 
