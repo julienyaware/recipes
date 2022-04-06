@@ -21,7 +21,7 @@ React UI Library for UI design
 
 math JS  for calculations using fractions
 
-Simple CSS for simple styling
+Simple CSS for  simple styling
 
 Redux and redux-toolkit for state management
 
