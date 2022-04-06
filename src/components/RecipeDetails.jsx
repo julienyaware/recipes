@@ -11,15 +11,21 @@ function RecipeDetails() {
 
     let selectedServings = specificRecipe.servings;
 
-    const handleChange = (e)=> {
-      selectedServings = e.target.value()
+    const handleChange = (event)=> {
+      selectedServings = event.target.value()
     }
 
-    const handleFormSubmit = (e)=> {
-     e.preventDefault()
+    const handleFormSubmit = (event)=> {
+    return  event.preventDefault()
     }
 
-    const recipeInDisplay = {
+    let recipeIndDisplay = (selectedNumberOfServings) => {
+      return {
+        recipeIndDisplay: specificRecipe,
+        servings: selectedNumberOfServings
+      }
+    }
+    let recipeInDisplay = {
       recipeIndDisplay: specificRecipe,
       servings: selectedServings
     }
@@ -28,13 +34,16 @@ function RecipeDetails() {
         <div className="reciperDetails">
           <br/>
           <form className="adjustServingsSection" onSubmit={handleFormSubmit}>
-            <span>Servings</span>
-          <input type="number" defaultValue={specificRecipe.servings} onChange={handleChange}/>
+            <span className="servings">Servings</span>
+            <input className="servingsInput" type="number" defaultValue={specificRecipe.servings} min="1" onChange={handleChange}/>
+
           <button onClick={()=>dispatch(adjustServings(recipeInDisplay))}>Adjust Servings</button>
           </form>
             <h3 className="cardTitle">{specificRecipe.title}</h3>
             <h4>{specificRecipe.description}</h4>
-            <p>Prep Time:<span>{specificRecipe.prep_time_min}</span></p>
+            <section className="prepSection">
+            <span className="prep">Prep Time:{specificRecipe.prep_time_min}</span>
+            </section>
           <div className="ingredients">
             <h4 className="heading">Ingredients</h4>
             <ul className="listItem">

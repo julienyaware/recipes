@@ -1,24 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 import allRecipes from './../data/allRecipes'
-import * as math from 'mathjs';
+import * as math from 'mathjs'
 const initialState = allRecipes
+
 
 const multiplyIngredientsByNewServings = (ingredient,servings)=> {
     const multiply = match=> {
-      let quantityPerPerson = math.divide(1,math.fraction(match))
-      console.log('quantityPerPerson:'+ quantityPerPerson)
-      //totalQuantityForAllServings
-      //let totalQuantityForAllServings 
-      return math.fraction(quantityPerPerson)
+      
+      let quantityPerPerson = eval(math.divide(1,match)) 
+      console.log('servings' + servings)
+      let totalQuantityForAllServings =math.multiply(quantityPerPerson,servings)
+      return math.fraction(totalQuantityForAllServings)
      }
      console.log(ingredient.replace(/\d+/g, multiply))
      return ingredient.replace(/\d+/g, multiply)
 
 }
 
-const generateNewServings = (arr)=> {
+
+const generateNewServings = (arr,servings)=> {
 const newQuantities = arr.map(ingredient => {
- return multiplyIngredientsByNewServings(ingredient)
+ return multiplyIngredientsByNewServings(ingredient,servings)
   
 })
 console.log('new array ni '+ newQuantities)
@@ -40,9 +42,14 @@ const allRecipesSlice = createSlice({
           ...action.payload.recipeIndDisplay,
           ingredients: generateNewServings(action.payload.recipeIndDisplay.ingredients,action.payload.servings)
         }
+        },
+        resetState(state,action){
+          return {
+            ...allRecipes
+          }
         }
     }
   });
 
-  export const {displayRecipeDetails, adjustServings} = allRecipesSlice.actions
+  export const {displayRecipeDetails, adjustServings, resetState} = allRecipesSlice.actions
   export default allRecipesSlice.reducer
