@@ -25,9 +25,8 @@ Simple CSS for  simple styling
 
 Redux and redux-toolkit for state management
 
-### `What to expect`
 
-![image](https://user-images.githubusercontent.com/13431164/161507319-ca34cb1a-3585-4dbd-9c3d-91ab781bbe10.png)
-![image](https://user-images.githubusercontent.com/13431164/161508203-ffe38b90-2c52-4210-805e-cfee91e64cef.png)
+
+
 
 
